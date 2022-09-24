@@ -1,6 +1,6 @@
 import IconArrowLeft from '@/assets/svg/icon-arrow-left'
 import IconArrowRight from '@/assets/svg/icon-arrow-right'
-import React, { memo, useState } from 'react'
+import React, { memo, useCallback, useState } from 'react'
 import { useEffect } from 'react'
 import { useRef } from 'react'
 import { ScrollWrapper } from './style'
@@ -13,6 +13,7 @@ const ScrollView = memo((props) => {
 
   // 优化点：对于保存值不变的变量，可以使用useRef，这样不需要每次重新执行都加载一遍
   const scrollContentRef = useRef()
+  let controlClickHandle
   useEffect(() => {
     const scrollWidth = scrollListRef.current.scrollWidth
     const clientWidth = scrollListRef.current.clientWidth
@@ -25,10 +26,10 @@ const ScrollView = memo((props) => {
      * 了，这样就会造成页面重置，导致下一个按钮继续显示，通过下面该方式默认执行一边就可以解决该问题了
      */
     controlClickHandle(null, true)
-  }, [props.children])
+  }, [props.children, controlClickHandle])
 
   // 事件处理函数
-  function controlClickHandle(isRight, useHistoryIndex) {
+  controlClickHandle = useCallback((isRight, useHistoryIndex) => {
     let newIndex = itemCount
     if(!useHistoryIndex){
       newIndex = isRight? itemCount + 1: itemCount - 1
@@ -39,7 +40,7 @@ const ScrollView = memo((props) => {
     setShowRight(scrollContentRef.current > newOffsetLeft)
     setShowLeft(newOffsetLeft > 0)
     setItem(newIndex)
-  }
+  }, [itemCount])
 
 
   return (

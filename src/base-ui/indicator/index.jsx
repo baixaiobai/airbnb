@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import React, { memo, useRef, useEffect } from 'react'
 import { IndicatorWrapper } from './style'
 
@@ -37,6 +37,6 @@ const Indicator = memo((props) => {
   )
 })
 
-Indicator.propTypes = {}
+// Indicator.propTypes = {}
 
 export default Indicator

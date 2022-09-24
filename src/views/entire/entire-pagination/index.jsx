@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { PagWrapper } from './style'
 import Pagination from '@mui/material/Pagination';
@@ -7,7 +7,7 @@ import { fetchRoomListAction } from '@/store/modules/entire/actionCreators';
 
 const Pagination1 = memo((props) => {
   // 从redux中获取roomlist数据
-  const { roomList, totalCount, currentPage } = useSelector((state) => ({
+  const { totalCount, currentPage } = useSelector((state) => ({
     roomList: state.entire.roomList,
     totalCount: state.entire.totalCount,
     currentPage: state.entire.currentPage
@@ -34,6 +34,6 @@ const Pagination1 = memo((props) => {
   )
 })
 
-Pagination1.propTypes = {}
+// Pagination1.propTypes = {}
 
 export default Pagination1

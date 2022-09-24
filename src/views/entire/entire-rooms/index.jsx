@@ -1,5 +1,5 @@
 import RoomItem from '@/components/room-item'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import React, { memo } from 'react'
 import { shallowEqual, useSelector } from 'react-redux'
 import { RoomWrapper } from './style'
@@ -7,7 +7,7 @@ import { RoomWrapper } from './style'
 
 const Rooms = memo((props) => {
   // 从redux中获取roomlist数据
-  const { roomList, totalCount, isLoading } = useSelector((state) => ({
+  const { roomList, totalCount } = useSelector((state) => ({
     roomList: state.entire.roomList,
     totalCount: state.entire.totalCount,
     isLoading: state.entire.isLoading
@@ -28,6 +28,6 @@ const Rooms = memo((props) => {
   )
 })
 
-Rooms.propTypes = {}
+// Rooms.propTypes = {}
 
 export default Rooms
